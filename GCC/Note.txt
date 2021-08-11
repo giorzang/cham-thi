@@ -1,0 +1,12 @@
+To update newer version of GCC Compiler
+Install Mingw with at least 3 following components
+1) mingw32-base
+2) mingw32-gcc-g++
+3) msys-base
+Copy to Install Folder\GCC 
+for MinGW 6.3 (G++8.2), go to:
+lib\gcc\mingw32\6.3.0\include\c++\ext\pb_ds\detail\resize_policy\
+Rename file
+hash_standard_resize_policy_imp.hpp0000644
+to
+hash_standard_resize_policy_imp.hpp

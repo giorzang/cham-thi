@@ -1,0 +1,547 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//VN"> 
+
+<html> 
+<head> 
+<meta name="description" content="Themis - Chương trình chấm bài tự động">
+	<meta name="keywords" content="themis, "chấm bài tự động">
+	<meta name="robots" content="index,follow">
+	<meta http-equiv="refresh" content="10800">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Language" content="vn">
+	<title>Themis - Chương trình chấm bài tự động</title>
+	<meta name="AUTHOR" content="Le Minh Hoang">
+	<meta name="COPYRIGHT" content="Le Minh Hoang">
+	<meta name="REVISIT-AFTER" content="1 week">
+	<meta name="REPLY-TO" content="leminhhoang@gmail.com">
+	<LINK REL="SHORTCUT ICON" href="icon.ico">
+	<style>
+*
+{
+font-family:"DOCFont","Cambria","Times New Roman";
+font-size:100%;
+text-align:justify;
+color:#000000;
+direction:ltr;
+line-height:150%;
+}
+h1
+{
+font-size:200%;
+color:#004080;
+font-weight:bold;
+text-align:center;
+} 
+h2
+{
+font-size:180%;
+color:#004080;
+font-weight:bold;
+text-align:left;
+}
+h3
+{
+font-size:150%;
+color:#004080;
+font-weight:bold;
+}
+a
+{
+color:#4080;
+}
+a:visited
+{
+color:#800080;
+text-decoration:none;
+}
+a:link 
+{
+color:#0000FF;
+text-decoration:none;
+}
+a:active
+{
+color:#008040;
+text-decoration:none;
+}
+plain
+{
+font-family:"Courier New";
+font-size:100%;
+font-weight:bold;
+color:#008040;
+direction:ltr;
+line-height:150%
+}
+	</style>
+	<base target="_self">
+</head>
+
+<body bgcolor=#FFFFE0>
+<h1>Themis – Chương trình chấm bài tự động</h1>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td style="vertical-align:bottom">
+	<img border="0" hspace="0" src="themis.png" width="216" height="376"><br>
+	Θέμις
+	</td>
+	<td style="vertical-align:middle">
+	<ul>
+	<li><a href="#Introduction">Giới thiệu sản phẩm</a></li>
+<ul>
+<li><a href="#Demand">Nhu cầu</a></li>
+<li><a href="#GettingStarted">Cài đặt và khởi động Themis</a></li>
+</ul>
+	<li><a href="#UserGuide">Hướng dẫn sử dụng</a></li>
+	<ul>
+<li><a href="#Preparation">Chuẩn bị một kỳ thi</a></li>
+<li><a href="#LoadTasks">Nạp danh sách bài thi</a></li>
+<li><a href="#TaskConfig">Cấu hình bài thi</a></li>
+<li><a href="#LoadContestants">Nạp danh sách thí sinh</a></li>
+<li><a href="#Refresh">Cập nhật danh sách bài thi và thí sinh</a></li>
+<li><a href="#CompilerConfig">Đặt cấu hình bộ dịch</a></li>
+<li><a href="#Judge">Chấm bài</a></li>
+<li><a href="#OnlineJudge">Chấm bài trực tuyến</a></li>
+<li><a href="#Report">Xem điểm và kết xuất báo cáo</a></li>
+<li><a href="#ContestCommands">Tạo mới, Ghi, và Mở kỳ thi cũ</a></li>
+<li><a href="#Security">Bảo mật</a></li>
+	</ul>
+<li><a href="#FAQ">Các câu hỏi thường gặp</a></li>
+	</ul>
+	</td>
+</tr>
+</table>
+<hr>
+<h2><a name="Introduction">Giới thiệu về sản phẩm</a></h2>
+<h3><a name="Demand">Nhu cầu về phần mềm</a></h3>
+<p>Phần mềm chấm bài tự động là công cụ hỗ trợ quan trọng của ban giám khảo các kỳ thi lập trình. Ưu điểm chính của việc sử dụng phần mềm chấm bài tự động so với cách chấm truyền thống là:</p>
+<ul>
+<li>Tự động hóa các thao tác cho điểm, tránh sự nhầm lẫn khi lên điểm và xếp hạng</li>
+<li>Quá trình cho điểm được thực hiện hoàn toàn khách quan trên các bộ test được xây dựng từ trước, không bị ảnh hưởng bởi ý kiến chủ quan hay tâm lý người chấm.</li>
+<li>Việc in ấn các bảng biểu, lấy ra các số liệu thống kê được thực hiện hoàn toàn tự động và chính xác. Những số liệu thống kê đó có thể tích hợp vào các phần mềm khác để làm báo cáo và rút kinh nghiệm cho các kỳ thi sau.</li>
+<li>Sau khi kỳ thi kết thúc, dữ liệu cho kỳ thi có thể công bố và các thí sinh khác có thể luyện tập trên các bài thi, sau đó dùng chương trình chấm tự động để tự đánh giá thay vì phải mời một ban giám khảo để chấm lại. Việc này sẽ giúp ích cho phong trào học tập tin học, đặc biệt ở các địa phương vùng sâu vùng xa không có điều kiện tiếp cận nhiều với các chuyên gia cũng như các kỳ thi chính thức.</li>
+</ul>
+<p><b>Themis</b> là phần mềm chấm bài tự động được phát triển theo yêu cầu của Cục Khảo thí và Kiểm định chất lượng giáo dục, Bộ Giáo dục và Đào tạo. Sản phẩm được thiết kế phục vụ kỳ thi học sinh giỏi Quốc gia hàng năm, nhưng hoàn toàn có thể sử dụng trong tất cả các kỳ thi và bài kiểm tra tin học dùng cơ chế chấm điểm tự động bằng bộ test</p>
+<p><b>Yêu cầu cấu hình phần mềm và phần cứng: </b>Microsoft Windows XP, Vista, Seven hoặc mới hơn. Microsoft Office Excel (Từ phiên bản Office 2000 trở lên) nếu cần kết xuất báo cáo ra Excel. Mọi cấu hình phần cứng đủ cài đặt các phần mềm trên đều có thể chạy Themis.</p>
+<h3><a name="GettingStarted">Cài đặt và khởi động Themis</a></h3>
+<p>Cách đơn giản nhất để cài đặt Themis là sử dụng bộ cài đặt, tuy nhiên cũng có thể copy vào máy và chạy bình thường. Themis được viết và dịch ra mã máy tự nhiên, chỉ một file Themis.exe chạy trực tiếp trên hệ điều hành mà không cần sử dụng bất kỳ framework hay virtual machine nào cả. Hai thư mục Judgers và Documentation cần copy vào cùng với file Themis.exe để cung cấp các bộ chấm và tài liệu hướng dẫn sử dụng.</p>
+<p>Hai điều cần chú ý khi chạy Themis:</p>
+<ul>
+<li>Trong trường hợp Themis không được cài đặt mà được copy về chạy trên Windows XP, cần khởi động Themis ở quyền quản trị (administrators) một lần rồi có thể thoát ngay, sau đó muốn chạy Themis ở quyền người dùng nào cũng được. Nếu sử dụng bộ cài đặt hoặc chạy trên hệ điều hành Windows Vista, Seven hoặc mới hơn thì không cần quan tâm vấn đề này.</li>
+<li>Themis cần chạy trong quyền người dùng hiện tại, không được khởi động Themis bằng chức năng “Run as…” để chạy trong quyền người dùng khác</li>
+</ul>
+<p style="text-align: center"><img border="0" hspace="0" src="gui.png" width="512" height="357"></p>
+<p>Giao diện chính của phần mềm gồm có hệ thống menu, thanh công cụ và vùng làm việc. Vùng làm việc có 2 tab: “Bảng điểm” và “Hướng dẫn”. Tab “Bảng điểm” hiển thị danh sách bài thi, danh sách thí sinh và kết quả chấm dưới dạng bảng. Tab “Hướng dẫn” là tài liệu hướng dẫn sử dụng, có thể đọc trực tiếp như văn bản này hoặc tra cứu nhanh từ các nút “Hướng dẫn” đối với các chức năng cụ thể.</p>
+<h2><a name="UserGuide">Hướng dẫn sử dụng</a></h2>
+<h3><a name="Preparation">Chuẩn bị một kỳ thi</a></h3>
+<p>Một kỳ thi cần được chuẩn bị trong hai thư mục: Thư mục chứa các bài thi (tạm gọi là thư mục Tasks) và thư mục chứa các bài làm (tạm gọi là thư mục Contestants).</p>
+<ul>
+<li>Thư mục chứa các bài thi gồm nhiều thư mục con, mỗi thư mục con chứa thông tin về một bài thi với tên thư mục là tên bài thi. Có bao nhiêu bài thi thì có bấy nhiêu thư mục con.<br>
+Mỗi bài thi có thể có nhiều test, mỗi test lại phải đặt trong một thư mục con của thư mục bài thi tương ứng. Bài thi có bao nhiêu test thì thư mục bài thi đó chứa bấy nhiêu thư mục con.<br>
+Trong thư mục của mỗi test, cần chuẩn bị các file dữ liệu của test (các files này sẽ được copy vào nơi có bài làm của thí sinh để cung cấp dữ liệu khi chạy bài làm của thí sinh). Ngoài ra cần cung cấp các files kết quả hoặc các files phụ trợ khác dành cho bộ chấm nếu cần thiết.
+</li>
+<li>Thư mục chứa các bài làm gồm nhiều thư mục con, mỗi thư mục con có tên là tên một thí sinh và chứa <b>toàn bộ</b> bài làm của thí sinh tương ứng. Bài làm của thí sinh ứng với mỗi bài thi cần đặt trong file có tên là «Tên bài thi».*, ở đây * là phần mở rộng do ngôn ngữ và công cụ lập trình quy định. Nếu bài làm của thí sinh khi dịch cần thêm các files/thư mục phụ trợ ngoài file nguồn do kỳ thi yêu cầu thì file nguồn và các files/thư mục phụ trợ cần nén vào một file duy nhất: <b>«Tên bài thi».zip</b>.</li>
+</ul>
+<table border="0" cellspacing="24" cellpadding="5">
+<tr>
+	<td width="50%">
+	Ví dụ về thư mục chứa bài thi
+	</td>
+<td width="50%">
+Ví dụ về thư mục chứa bài làm
+</td>
+</tr>
+<tr>
+	<td style="vertical-align:top; font-size:75%">
+<ul><li>Tasks
+<ul>
+<li>GCD
+<ul>
+<li>TEST01<ul><li>GCD.INP</li><li>GCD.OUT</li></ul></li>
+<li>TEST02<ul><li>GCD.INP</li><li>GCD.OUT</li></ul></li>
+<li>…</li>
+<li>TEST10<ul><li>GCD.INP</li><li>GCD.OUT</li></ul></li>
+</ul>
+</li>
+<li>LARES
+<ul>
+<li>TEST01<ul><li>LARES.INP</li><li>LARES.OUT</li></ul></li>
+<li>TEST02<ul><li>LARES.INP</li><li>LARES.OUT</li></ul></li>
+<li>…</li>
+<li>TEST09<ul><li>LARES.INP</li><li>LARES.OUT</li></ul></li>
+</ul>
+</li>
+<li>TABLE
+<ul>
+<li>TEST01<ul><li>TABLE.INP</li><li>TABLE.ANS</li></ul></li>
+<li>TEST02<ul><li>TABLE.INP</li><li>TABLE.ANS</li></ul></li>
+<li>…</li>
+<li>TEST20<ul><li>TABLE.INP</li><li>TABLE.ANS</li></ul></li>
+</ul>
+</li>
+</ul>
+</li></ul>
+	</td>
+<td style="vertical-align:top; font-size: 75%">
+<ul><li>Contestants
+<ul>
+<li>BadGuy
+<ul>
+<li>GCD.PAS</li><li>LARES.PAS</li><li>TABLE.PAS</li>
+</ul>
+</li>
+<li>Jury
+<ul>
+<li>GCD.JAVA</li><li>LARES.CPP</li><li>TABLE.PAS</li>
+</ul>
+</li>
+</ul>
+</li></ul>
+</td>
+</tr>
+</table>
+<p>Như ví dụ trên có 3 bài thi với tên là GCD, LARES và TABLE. Bài GCD được chấm bằng 10 test, bài LARES được chấm bằng 9 test và bài TABLE được chấm bằng 20 test. Có 2 thí sinh với tên là BadGuy và Jury. Thí sinh BadGuy nộp cả 3 bài làm bằng 3 files: GCD.PAS, LARES.PAS và TABLE.PAS. Thí sinh Jury cũng nộp cả 3 bài làm bằng 3 files: GCD.JAVA, LARES.CPP và TABLE.PAS.</p>
+<h3><a name="LoadTasks">Nạp danh sách bài thi</a></h3>
+<p>Như đã chuẩn bị, danh sách bài thi được nạp vào bằng thư mục chứa các bài thi (Tasks). Ví dụ nếu có cấu trúc thư mục:</p>
+<table border="0" cellspacing="24" cellpadding="5">
+<tr>
+	<td style="vertical-align:top">
+	<ul><li>Tasks
+<ul>
+<li>GCD
+<ul>
+<li>TEST01</li>
+<li>TEST02</li>
+<li>…</li>
+<li>TEST10</li>
+</ul>
+</li>
+<li>LARES
+<ul>
+<li>TEST01</li>
+<li>TEST02</li>
+<li>…</li>
+<li>TEST09</li>
+</ul>
+</li>
+<li>TABLE
+<ul>
+<li>TEST01</li>
+<li>TEST02</li>
+<li>…</li>
+<li>TEST20</li>
+</ul>
+</li>
+</ul>
+</li></ul>
+	</td>
+	<td style="vertical-align:top">
+<p>Khi đó nếu người dùng bấm nút <img border="0" hspace="0" src="btnloadtasks.png" width="48" height="48" style="vertical-align:middle"> (hoặc phím tắt F2) và chọn thư mục Tasks, 3 bài với tên là GCD, LARES và TABLE sẽ được nạp vào danh sách:</p>
+<p><b>Thao tác nhanh: </b>Một cách khác để nạp danh sách bài thi là kéo thư mục chứa danh sách bài thi (thư mục Tasks) từ Explorer thả vào một cột bất kỳ trong tab “Bảng điểm” của vùng làm việc ngoại trừ cột “Thí sinh”</p>
+<p style="text-align: center"><img border="0" hspace="0" src="gui2.png" width="512" height="357"></p>
+<p>Chỉ những bài được chọn (có dấu kiểm “&#x2713;” bên cạnh tên bài) mới được chấm. Để chọn/bỏ chọn một bài, bấm chuột phải vào tiêu đề cột hoặc vào cấu hình mỗi bài thi và đánh dấu/bỏ đánh dấu ô “Có chấm bài này”)</p>
+	</td>
+</tr>
+</table>
+<p><b>Chú ý: </b>Khi nạp danh sách bài thi mới, toàn bộ bảng điểm sẽ bị xóa. Nếu muốn thêm/bớt bài thi bằng cách bổ sung thêm thư mục con, dùng chức năng <a href="#Refresh">cập nhật danh sách bài thi</a>.</p>
+<h3><a name="TaskConfig">Đặt cấu hình bài thi</a></h3>
+<p>Việc cấu hình một bài thi được thực hiện bằng cách dùng các menu con trong menu “Bài thi”. Một cách nhanh hơn là bấm chuột phải vào tiêu đề cột tương ứng với bài thi và chọn menu con “Cấu hình bài thi”.</p>
+<p style="text-align: center"><img border="0" hspace="0" src="contextmenu2.png" width="294" height="264"></p>
+<p>Cửa sổ cấu hình bài thi hiện ra như sau:</p>
+<p style="text-align: center"><img border="0" hspace="0" src="examconfig.png" width="512" height="304"></p>
+<ul>
+<li><b>Các tests: </b>Mỗi thư mục con trong thư mục một bài thi chứa thông tin về một test. Như ví dụ trên, bài LARES có 9 test với tên từ Test01 đến Test09.
+<li><b>Tên các file dữ liệu: </b>Trước khi chạy chương trình của thí sinh, các file này sẽ được copy vào thư mục hoạt động để cung cấp dữ liệu cho chương trình. Mỗi test có một bộ file dữ liệu riêng, được đặt trong <b>thư mục của test</b>. Nếu có nhiều file dữ liệu, các tên file phải ghi cách nhau bởi ký tự "|" (mã số 124). Trường hợp bài chạy không cần file dữ liệu (chẳng hạn như các dạng bài nộp output only), ô này có thể để trống.</li>
+<li><b>Dùng luồng vào chuẩn:</b>Nếu đánh dấu ô này, file dữ liệu đầu tiên trong danh sách sẽ được định hướng làm luồng vào chuẩn (standard input) khi chạy chương trình của thí sinh. Nếu không đánh dấu, luồng vào chuẩn cho chương trình của thí sinh mặc định là bàn phím và thường không được sử dụng khi chấm tự động.</li>
+<li><b>Tên các file kết quả: </b>Sau khi chạy chương trình của thí sinh, các file này sẽ được bộ chấm sử dụng để phân tích và chấm điểm. Mỗi test có một bộ file kết quả riêng, được đặt trong thư mục của test giống như các file dữ liệu. Nếu có nhiều file kết quả, các tên file phải ghi cách nhau bởi ký tự "|" (mã số 124). Nếu bộ chấm không cần cung cấp tên file kết quả (chẳng hạn như các dạng chấm ngoài với tên file kết quả biết trước), ô này có thể để trống.</li>
+<li><b>Dùng luồng ra chuẩn: </b>Nếu đánh dấu ô này, file kết quả đầu tiên trong danh sách sẽ được định hướng làm luồng ra chuẩn (standard output) khi chạy chương trình của thí sinh. Nếu không đánh dấu, luồng ra chuẩn cho chương trình của thí sinh mặc định là màn hình và thường không được sử dụng khi chấm tự động.</li>
+<li><b>Chương trình chấm: </b>Có 7 bộ chấm đi kèm với phần mềm. Ngoài ra người sử dụng có thể bổ sung thêm những bộ chấm khác (Tham khảo trong mục <a href="#FAQ">Các câu hỏi thường gặp</a>)
+<ul>
+<li>C1LinesWordsIgnoreCase, C2LinesWordsCase, C3WordsIgnoreCase, C4WordsCase: Được áp dụng khi các file kết quả là file văn bản ASCII. Bộ chấm đối sánh từng file kết quả trong thư mục của mỗi test với file trùng tên do chương trình của thí sinh tạo ra khi chạy với test đó. Trong các bộ chấm này, hai ký tự mang mã số 9(dấu tab) và 32(dấu cách) được coi là dấu phân tách từ trên dòng.</li>
+<li><b>C1LinesWordsIgnoreCase: </b>Hai file được coi là khớp nhau (đúng) nếu chúng <i>khớp nhau về danh sách các từ</i> kể cả về <i>thứ tự của từ trên dòng</i> và <i>thứ tự của dòng chứa từ trong file</i>. Việc so khớp từ không phân biệt chữ hoa và chữ thường. Việc thừa một số dòng trống cuối file hoặc thừa một số dấu phân tách từ đầu file không ảnh hưởng tới kết quả, tuy nhiên việc thừa một dòng trống đầu file sẽ làm ảnh hưởng tới kết quả do cơ chế đối sánh của bộ chấm.</li>
+<li><b>C2LinesWordsCase: </b>Việc đối sánh giống như bộ chấm
+C1LinesWordsIgnoreCase, nhưng việc so khớp từ có phân biệt chữ hoa và chữ thường.</li>
+<li><b>C3WordsIgnoreCase: </b>Hai file được coi là khớp nhau (đúng) nếu chúng <i>khớp nhau về danh sách các từ</i> và <i>thứ tự các từ trong file</i>. Việc so khớp từ không phân biệt chữ hoa và chữ thường. Các từ có thể ghi trên cùng dòng cách nhau bởi dấu phân tách từ hoặc ghi trên nhiều dòng khác nhau mà không ảnh hưởng tới kết quả.</li>
+<li><b>C4WordsCase: </b>Việc đối sánh giống như bộ chấm C3WordsIgnoreCase, nhưng việc so khớp từ có phân biệt chữ hoa và chữ thường.</li>
+<li><b>C5Binary: </b>Được áp dụng với mọi loại file kết quả. Bộ chấm đối sánh từng file kết quả trong thư mục của mỗi test với file trùng tên do chương trình của thí sinh tạo ra khi chạy với test đó. Việc đối sánh được thực hiện trên từng byte của file</li>
+<li><b>C6AMM2External: </b>Nạp trình chấm ngoài tương thích với AMM2. Trình chấm ngoài được đặt trong thư mục bài thi tương ứng, có tên là *.exe trong đó * là tên bài thi. Trình chấm ngoài có nhiệm vụ:<br>
+Chạy trong thư mục hoạt động, trong đó có các file kết quả của thí sinh đã chạy với một test.<br>
+Nhận vào một file văn bản ASCII “COMPAR$R.INP” gồm một dòng duy nhất chứa tên thư mục của test tương ứng. Tên thư mục đã được mã hóa utf-8, tức là nếu tên thư mục chứa những ký tự có mã số ≥ 128 (ví dụ tiếng Việt có dấu unicode) thì trình chấm ngoài cần giải mã utf-8 để có được tên thư mục thật sự.<br>
+Xuất ra file văn bản ASCII “COMPAR$R.OUT” với khuôn dạng: Dòng 1 có dạng DUNG, SAI, SAIDINHDANG hoặc DUNGMOTPHAN p với p là một số nguyên trong phạm vi từ 0 tới 100 đánh giá độ tốt của kết quả. Các dòng tiếp theo là những lời nhận xét về kết quả.<br>
+<b>Chú ý: </b>Bộ chấm C6AMM2External chỉ dùng để giữ tính tương thích với những trình chấm ngoài cũ. Nếu viết những trình chấm ngoài mới, đề nghị sử dụng bộ chấm C7External.</li>
+<li><a name="ExternalJudger"><b>C7External: </a></b>Nạp trình chấm ngoài. Trình chấm ngoài được đặt trong thư mục bài thi tương ứng, có tên là Check*.exe trong đó * là tên bài thi.<br>
+Khi chương trình của thí sinh chạy xong một test, trình chấm ngoài được kích hoạt và chạy trong thư mục hoạt động, trong đó có các file kết quả của thí sinh đã chạy với một test.<br>
+Trình chấm ngoài được cung cấp luồng vào chuẩn (standard input) gồm 2 dòng: Dòng 1 là tên thư mục chứa dữ liệu của test. Dòng 2 là tên thư mục đang hoạt động. Tên thư mục đã được mã hóa utf-8 và có dấu “\” ở cuối xâu, tức là nếu tên thư mục chứa những ký tự có mã số ≥ 128 (chẳng hạn các ký tự tiếng Việt có dấu unicode) thì trình chấm ngoài cần giải mã utf-8 để có được tên thư mục thật sự.<br>
+Trình chấm ngoài cần đưa ra luồng ra chuẩn (standard output) các nhận xét về kết quả chấm, dòng cuối cùng của luồng ra chuẩn gồm duy nhất một số thực trong phạm vi từ 0.00 tới 1.00 là đánh giá về điểm. Giá trị này sẽ được nhân với điểm của test.<br>
+Để đưa ra các nhận xét bằng tiếng Việt có dấu unicode, cách làm tương tự như xuất ra một file văn bản utf-8: Trình chấm ngoài trước tiên phải xuất ra 3 ký tự ASCII mã số 239, 187 và 191 (<a href="http://en.wikipedia.org/wiki/Byte_order_mark#UTF-8" target="_blank">utf-8 BOM</a>), sau đó là các thông báo unicode đã được <a href="http://en.wikipedia.org/wiki/UTF-8" target="_blank">mã hóa utf-8</a>. Chẳng hạn: Nếu trình chấm ngoài đưa ra thiết bị xuất chuẩn:<br>
+<plain>
+ï»¿Káº¿t quáº£ gáº§n Ä‘Ãºng<br>
+0.68<br>
+</plain>
+Có nghĩa là:<br>
+<plain>
+Kết quả gần đúng<br>
+0.68<br>
+</plain>
+Dĩ nhiên nếu chỉ xuất các ký tự ASCII thì không cần quan tâm tới vấn đề này
+</li>
+</ul>
+</li>
+<li><b>Cấu hình bộ test: </b>Thiết lập cho từng test bao gồm: điểm, giới hạn thời gian, giới hạn bộ nhớ của bài làm khi chạy test đó lúc chấm. Nếu không có thiết lập riêng cho test, những thông tin này sẽ lấy từ thiết lập chung.</li>
+</ul>
+<p><b>Chú ý: </b></p>
+<ul>
+<li>Khi đặt lại cấu hình một bài thi, hệ thống sẽ khuyến cáo người sử dụng xóa điểm của bài thi đó khỏi bảng điểm. Nếu không có lý do đặc biệt, người sử dụng nên cho phép xóa và chấm lại cho phù hợp với các thiết lập mới của bài thi</li>
+<li>Nếu bài thi đặt trong thư mục mà hệ thống có quyền ghi. Hệ thống sẽ ghi lên thư mục của mỗi bài thi một file nhỏ có tên là settings.cfg lưu cấu hình bài thi vừa thiết lập. Nếu kỳ thi khác muốn sử dụng bài thi này với những thiết lập vừa đặt sẽ không cần cấu hình lại.</li>
+</ul>
+<h3><a name="LoadContestants">Nạp danh sách thí sinh</a></h3>
+<p>Danh sách thí sinh được nạp vào bằng thư mục chứa các bài làm (Contestants). Như đã chuẩn bị, mỗi thư mục con trong thư mục này chứa bài làm của một thí sinh trong danh sách. Ví dụ nếu có cấu trúc thư mục:</p>
+<table border="0" id="table8" cellspacing="24" cellpadding="5">
+<tr>
+	<td style="vertical-align:top">
+	<ul><li>Contestants
+<ul>
+<li>BadGuy
+</li>
+<li>Jury
+</li>
+</ul>
+</li></ul>
+	</td>
+	<td style="vertical-align:top">
+<p>Khi đó nếu người dùng bấm nút <img border="0" hspace="0" src="btnloadcontestants.png" width="48" height="48" style="vertical-align:middle"> (hoặc phím tắt F3) và chọn thư mục Contestants, 2 thí sinh với mã tên là BadGuy và Jury sẽ được nạp vào danh sách:</p>
+<p><b>Thao tác nhanh: </b>Một cách khác để nạp danh sách thí sinh là kéo thư mục chứa danh sách thí sinh (thư mục Contestants) từ Explorer thả vào cột “Thí sinh” trong tab “Bảng điểm”.</p>
+<p style="text-align: center"><img border="0" hspace="0" src="gui3.png" width="512" height="357"></p>
+<p>Chỉ những thí sinh được chọn (có dấu kiểm “&#x2713;” bên cạnh tên thí sinh) mới được chấm bài.</p>
+	</td>
+</tr>
+</table>
+<p><b>Chú ý: </b>Khi nạp danh sách thí sinh mới, toàn bộ bảng điểm sẽ bị xóa. Nếu muốn thêm/bớt thí sinh bằng cách bổ sung hay xóa thư mục con, dùng chức năng <a href="#Refresh">cập nhật danh sách thí sinh</a>.</p>
+<h3><a name="Refresh">Cập nhật danh sách bài thi và thí sinh</a></h3>
+<p>Nút <img border="0" hspace="0" src="btnrefreshtasks.png" width="48" height="48" style="vertical-align:middle"> (hay phím tắt F4) dùng để cập nhật lại danh sách bài thi. Mỗi khi thư mục chứa các bài thi có sự thay đổi thư mục con, nút này sẽ tự động đổi màu để nhắc nhở người dùng cập nhật lại danh sách bài thi.</p>
+<ul>
+<li>Nếu một thư mục của bài thi bị xóa hoặc chuyển khỏi thư mục chứa danh sách bài thi, cột điểm của bài thi đó sẽ bị loại khỏi vùng làm việc, các cột khác giữ nguyên.</li>
+<li>Nếu một thư mục của bài thi được thêm vào thư mục chứa danh sách bài thi, một cột điểm trống mới ứng với bài thi mới sẽ được thêm vào, các cột khác giữ nguyên.</li>
+<li>Nếu một thư mục ứng với một bài thi có sự thay đổi về nội dung (chẳng hạn thêm/bớt/thay đổi test), hệ thống vẫn cập nhật nội dung mới nhưng vẫn giữ nguyên cột điểm cũ do việc đánh giá mức độ thay đổi khá tốn thời gian với những bài có bộ test lớn. Người dùng sẽ phải cấu hình lại bài thi theo nội dung mới và chấm lại.</li>
+</ul>
+<p>Nút <img border="0" hspace="0" src="btnrefreshcontestants.png" width="48" height="48" style="vertical-align:middle"> (hay phím tắt F5) dùng để cập nhật lại danh sách thí sinh. Mỗi khi thư mục chứa các bài làm của thí sinh có sự thay đổi thư mục con, nút này sẽ tự động đổi màu để nhắc nhở người dùng cập nhật lại danh sách thí sinh.</p>
+<ul>
+<li>Nếu một thư mục của thí sinh bị xóa hoặc chuyển khỏi thư mục chứa danh sách bài làm, hàng điểm của thí sinh đó sẽ bị loại khỏi vùng làm việc, các hàng khác giữ nguyên.</li>
+<li>Nếu một thư mục của thí sinh được thêm vào thư mục chứa danh sách bài làm, một hàng điểm trống mới ứng với thí sinh mới sẽ được thêm vào, các hàng khác giữ nguyên.</li>
+<li>Nếu một thư mục của thí sinh có sự thay đổi về nội dung (chẳng hạn nộp lại bài), hệ thống vẫn cập nhật nội dung mới nhưng vẫn giữ nguyên hàng điểm cũ do việc đánh giá mức độ thay đổi khá tốn thời gian. Người dùng sẽ phải chấm lại bài của thí sinh này. Nếu thư mục các bài làm là thư mục chia sẻ để thí sinh nộp bài trong mạng nội bộ, thí sinh nên tạo một thư mục mới để tránh nhầm lẫn. Phiên bản kế tiếp sẽ có thể chức năng lưu trữ: Mỗi thí sinh khi chấm bài xong sẽ được nén bài làm lại và đẩy sang cơ sở dữ liệu lưu trữ, thư mục của thí sinh sẽ được xóa ngay sau đó.</li>
+</ul>
+<h3><a name="CompilerConfig">Cấu hình bộ dịch</a></h3>
+<p>Bài làm của các thí sinh có thể viết bằng nhiều ngôn ngữ lập trình và nhiều công cụ phát triển khác nhau. Tùy theo quy chế của kỳ thi, có thể cần đặt lại các thông số của bộ dịch cho chính xác. Ngoài các thiết lập mặc định về bộ dịch, người dùng có thể bổ sung, loại bỏ các chương trình dịch hoặc sửa đổi tham số dịch mặc định. Để thiết lập cấu hình bộ dịch, bấm nút <img border="0" hspace="0" src="btncompilerconfig.png" width="48" height="48" style="vertical-align:middle"> (hoặc phím tắt F6). Hộp thoại cấu hình bộ dịch hiện ra gồm một danh sách, chứa các phần mở rộng và lệnh dịch tương ứng:</p>
+<p style="text-align: center"><img border="0" hspace="0" src="compilerconfig.png" width="512" height="343"></p>
+<p>Việc dịch bài làm của thí sinh được thực hiện trước khi chấm mỗi bài. Giả sử thí sinh giải bài thi tên là PROBLEM thì tên bài làm của thí sinh phải có dạng PROBLEM.* với * là phần mở rộng do đề bài hoặc công cụ lập trình quy định. Hệ thống sẽ tìm trong danh sách kể trên phần mở rộng khớp với * và thực hiện lệnh dịch tương ứng để dịch bài của thí sinh ra thành file khả thi PROBLEM.EXE (file bài làm bằng ngôn ngữ JAVA *.java sẽ được dịch ra thành file *.class).</p>
+<p>Nếu thí sinh nộp nhiều bài giải cho một bài thi bằng nhiều ngôn ngữ khác nhau, trong nhiều file khác nhau, thì phần mở rộng đầu tiên trong danh sách mà hệ thống tìm thấy file sẽ được chọn và chỉ một file tương ứng đó được dịch theo dòng lệnh tương ứng và chấm. Như ví dụ và danh sách trên, nếu thí sinh nộp cả 4 file: PROBLEM.pas, PROBLEM.cpp, PROBLEM.java và PROBLEM.exe thì chỉ có file PROBLEM.pas được dịch và chấm</p>
+<p>Việc thêm/bớt/thay đổi thứ tự các phần mở rộng có thể thực hiện dễ dàng bằng các phím hướng dẫn trong hộp thoại. Để soạn thảo, thay đổi lệnh dịch, người dùng gõ trực tiếp vào danh sách.</p>
+<p>Trong mỗi lệnh dịch, các thành phần sau đây sẽ được thay thế khi dịch:<p>
+<ul>
+<li>%PATH% sẽ được thay bằng đường dẫn tới bài cần dịch (có cả dấu \ ở cuối)</li>
+<li>%NAME% sẽ được thay bằng tên bài thi</li>
+<li>%EXT% sẽ được thay bằng phần mở rộng trong tên file bài làm của thí sinh</li>
+</ul>
+<p><b>Ví dụ: </b>
+Nếu thư mục hoạt động là c:\WorkSpace\ và thí sinh nộp bài làm PROBLEM1.pas cho bài thi PROBLEM1. Lệnh dịch:</p>
+<plain>
+"fpc.exe" -o"%PATH%%NAME%.exe" -O2 -XS -Sg "%PATH%%NAME%%EXT%"<br>
+</plain>
+<p>khi thực thi sẽ là:</p>
+<plain>
+"fpc.exe" -o"c:\WorkSpace\PROBLEM1.exe" -O2 -XS -Sg "c:\WorkSpace\PROBLEM1.pas"
+</plain>
+<p>Mỗi lệnh dịch khi thực hiện sẽ chạy trong <i>thư mục chứa chương trình dịch</i> trừ phi cuối dòng lệnh dịch có thêm chỉ dẫn <b>|@WorkDir="Tên thư mục"</b> để chỉ ra tên thư mục hoạt động khi chạy lệnh dịch. Chỉ dẫn này có ích nếu người dùng đặt “phòng thi” trong thư mục có tên chứa ký tự unicode nằm ngoài bảng mã ANSI, một số chương trình dịch không tương thích unicode sẽ không đọc được tham số dòng lệnh chứa ký tự này. Với chỉ dẫn <b>|@WorkDir="%PATH%"</b>, các thành phần như tên ổ đĩa và thư mục có thể loại bỏ khỏi tham số dòng lệnh và trình dịch không còn bị rắc rối với những ký tự unicode nữa.</p>
+<p><b>Ví dụ: </b>
+Nếu thư mục hoạt động là c:\Thi thử\ và thí sinh nộp bài làm PROBLEM1.pas cho bài thi PROBLEM1. Lệnh dịch:</p>
+<plain>
+"fpc.exe" -o"%NAME%.exe" -O2 -XS -Sg %NAME%%EXT%"|@WorkDir="%PATH%"
+</plain>
+<p>sẽ chạy trong thư mục c:\Thi thử\ theo tham số:</p>
+<plain>
+"fpc.exe" -o" PROBLEM1.exe" -O2 -XS -Sg "PROBLEM1.pas"
+</plain>
+<p>(Ký tự “ử” nằm ngoài bảng mã ASCII không còn xuất hiện trong tham số dòng lệnh nữa)</p>
+<p>Nếu một dạng file bài làm cần dịch bằng nhiều lệnh tuần tự mới có được file .exe thì người dùng cần làm một tiến trình chung chạy tuần tự các lệnh dịch rồi đưa tiến trình chung này vào cấu hình bộ dịch. Cách đơn giản nhất là làm một file .bat. Chẳng hạn như:<br>
+"cmd.exe" compiler.bat "%PATH%%NAME%%EXT%"</p>
+<p><b>Khuyến cáo:&nbsp</b>Nên sử dụng phiên bản mới nhất cho các chương trình dịch bằng cách: Tải về và cài đặt theo đúng hướng dẫn của nhà phân phối, sau đó sửa lại đường dẫn tới các bộ dịch trong hộp thoại "Cấu hình bộ dịch".<br>
+Một số chương trình dịch phổ biến:<br>
+<a href = "http://www.freepascal.org/" target="_blank">FPC cho ngôn ngữ Pascal</a><br>
+<a href = "http://gcc.gnu.org/" target="_blank">GCC/G++ cho ngôn ngữ C/C++</a><br>
+<a href = "http://www.oracle.com/technetwork/java/javase/overview/" target="_blank">JDK cho ngôn ngữ Java</a><br>
+<a href = "http://www.python.org/" target="_blank">Trình thông dịch PYTHON</a><br>
+</p>
+<h3><a name="Judge">Chấm bài</a></h3>
+<p>Nút <img border="0" hspace="0" src="btnjudge.png" width="48" height="48" style="vertical-align:middle"> (hay phím tắt F9) sẽ mở hộp thoại “Chấm bài”. Chú ý là chỉ những bài làm và bài thi nào đánh dấu kiểm (&#x2713;) mới được chấm. Bộ chấm sẽ được kích hoạt ngay và các thanh tiến trình cho biết đã chấm đến test nào, của bài nào và của thí sinh nào. Điểm sẽ được cập nhật ngay khi mỗi bài làm của thí sinh được chấm xong</p>
+<p style="text-align: center"><img border="0" hspace="0" src="gui4.png"  width="512" height="357"></p>
+<p>Khi chấm xong mỗi bài nộp, kết quả chấm sẽ được hiện ra ngay trong vùng làm việc ở tab “Bảng điểm”:
+<ul>
+<li>Nếu bài làm của một thí sinh chưa được chấm, ô điểm của bài và thí sinh tương ứng sẽ trống</li>
+<li>Nếu bài làm không được tìm thấy trong thư mục của một thí sinh (do sai tên file hoặc thí sinh không nộp bài), ô điểm của bài và thí sinh tương ứng sẽ được đánh dấu &#x2204; (there does not exist)</li>
+<li>Nếu bài làm của thí sinh gặp lỗi khi dịch (do có lỗi cú pháp), ô điểm của bài và thí sinh tương ứng sẽ được đánh dấu &#x2131; (failure)</li>
+<li>Nếu bài làm của thí sinh chạy gặp lỗi nghiêm trọng, khiến hệ thống chấm buộc phải dừng quá trình chấm bài đó một cách bất thường, ô điểm của bài và thí sinh tương ứng sẽ được đánh dấu &#x26A0; (critical error)</li>
+<li>Nếu bài làm của thí sinh dịch được và chấm xong, ô điểm của bài và thí sinh tương ứng sẽ hiện điểm kèm theo dấu &#x2713; (checked)</li>
+</ul>
+<p><b>Chú ý:</b></p>
+<ul>
+<li>Nếu bài làm viết bằng ngôn ngữ Java (được Themis dịch ra thành file *.class) thì cần có máy ảo JAVA để thực thi mã bytecode bên trong. Nếu máy có cài JRE, Themis sẽ sử dụng JRE được cài sẵn trên máy. Nếu máy không cài JRE. Themis sẽ sử dụng JRE trong thư mục JDK\ </li>
+<li> Nếu bài làm viết bằng ngôn ngữ Python (thông dịch), Themis sẽ sử dụng Python trong thư mục PYTHON\. Nếu bạn muốn thay đổi version khác của Python, chỉ cần copy vào thư mục này.</li>
+</ul>
+<h3><a name="OnlineJudge">Chấm bài trực tuyến</a></h3>
+<p>Trong chế độ chấm trực tuyến, các thí sinh sẽ nộp bài (trực tuyến) vào chung một thư mục gọi là “thư mục nộp bài trực tuyến” (Online-Submission Directory – OSD). Bất cứ khi nào có bài mới ghi vào OSD, hệ thống sẽ chấm ngay bài đó và trả về kết quả chấm.</p>
+<p>Để thiết lập chế độ chấm trực tuyến:</p>
+<p>Bước 1: Thiết lập một kỳ thi (offline) như bình thường, tức là nạp thư mục chứa bài thi và cấu hình bài thi đầy đủ, nạp thư mục chứa bài làm (có thể rỗng), kiểm tra cấu hình dịch và chế độ bảo mật… Chú ý là để chấm trực tuyến, Themis phải có quyền ghi lên thư mục chứa bài làm.</p>
+<p>Bước 2: Nhấn nút <img border="0" hspace="0" src="btnsettings.png" width="48" height="48" style="vertical-align:middle"> hoặc phím tắt F11 để mở hộp thoại “Thiết lập môi trường”, sau đó điền tên OSD vào trong ô “Thư mục nộp bài trực tuyến”:</p>
+<p style="text-align: center"><img border="0" hspace="0" src="settings.png" width="398" height="380"></p>
+<p>Các thiết lập như vậy là xong, hệ thống chấm trực tuyến vận hành như sau:</p>
+<p><b>(a) Nộp bài:</b></p>
+<p>Thí sinh (hoặc một phần mềm dịch vụ) ghi bài vào OSD theo quy cách:</p>
+<p style="text-align: center"><b>*[Mã Thí sinh][Tên bài thi].EXT</b></p>
+<p>Trong đó</p>
+<ul>
+<li>* là một dãy ký tự bất kỳ (do hệ thống nộp bài hoặc thí sinh tự đặt), không có ý nghĩa với hệ thống chấm</li>
+<li>Mã thí sinh để xác định thí sinh, nếu mã thí sinh này chưa có trong danh sách thí sinh, hệ thống sẽ tự bổ sung thí sinh này vào danh sách và tạo thư mục bài làm cho thí sinh đó trong thư mục chứa các bài làm.</li>
+<li>Tên bài thi để xác định bài nộp của thí sinh ứng với bài thi nào, nếu tên bài thi không có trong danh sách bài thi đã thiết lập, bài nộp này bị bỏ qua.</li>
+<li>EXT là phần mở rộng do ngôn ngữ lập trình quy định. Thí sinh chỉ được nộp 1 file cho 1 bài làm. Trường hợp bài làm của thí sinh cần một số file phụ trợ khác mới chạy được thì cần nén bài làm và tất cả các file phụ trợ vào trong một file .ZIP, trong trường hợp này phần mở rộng EXT là “ZIP”.</li>
+</ul>
+<p>Chú ý:&nbsp;<i>Dấu mở/đóng ngoặc vuông là cần thiết, ví dụ nếu thí sinh ABC nộp bài TABLE viết bằng ngôn ngữ Pascal thì tên file nộp trực tuyến có thể đặt là: 1234[ABC][TABLE].pas </i></p>
+<p><b>(b) Nhận bài</b></p>
+<p>Ngay khi nhận được bài, hệ thống sẽ chuyển bài nộp 1234[ABC][TABLE].pas vào thư mục chứa bài làm của thí sinh ABC, bài nộp này sau đó sẽ được đổi tên thành TABLE.pas (những bài nộp trước đây của thí sinh ABC cho bài thi TABLE sẽ được chuyển vào thư mục con $History)</p>
+<p><b>(c) Chấm bài và báo kết quả</b></p>
+<p>Hệ thống chấm bài TABLE của thí sinh ABC, ghi lại biên bản chấm vào thư mục con “logs” của OSD. Biên bản chấm có tên file dạng: <b>tên file nộp nối thêm đuôi .log</b>, như ví dụ này, biên bản chấm sẽ được ghi vào file “1234[ABC][TABLE].pas.log”. Thí sinh (hoặc phần mềm dịch vụ) có thể đọc file này lấy kết quả chấm. Nếu thí sinh nộp nhiều lần bài giải cho một bài thi, điểm của thí sinh trong bảng điểm được lấy từ kết quả chấm bài nộp cuối cùng.</p>
+<p><b>Chú ý kỹ thuật:</b></p>
+<ul>
+<li>Chức năng chấm bài trực tuyến thường được cho tương tác với một phần mềm nộp bài. Phần mềm nộp bài chạy trên máy của thí sinh hoặc web service có nhiệm vụ nộp file vào OSD (chứa trên máy chấm) theo đúng quy định tên file, sau đó chờ biên bản chấm và gửi lại cho thí sinh biết kết quả, đồng thời có thể lưu lại biên bản trong cơ sở dữ liệu lưu trữ. Yêu cầu duy nhất khi viết phần mềm nộp bài là phải thực hiện đọc/ghi file trong OSD càng nhanh càng tốt, tránh làm chậm máy chấm. Vì vậy phần mềm nộp bài nên ghi bài nộp lên một thư mục khác, sau khi việc ghi hoàn tất mới chuyển bài nộp sang OSD.</li>
+<li>Nếu có điều kiện, thiết lập càng nhiều máy chấm trong mạng càng tốt: Kỳ thi trên các máy chấm được cấu hình như nhau, nhưng mỗi máy chấm có một OSD riêng biệt. Phần mềm nộp bài cần phân phối các bài nộp lên các máy chấm để giảm thiểu thời gian chờ đợi kết quả, ảnh hưởng tới tiến độ làm bài của thí sinh</li>
+</ul>
+<h3><a name="Report">Xem điểm và kết xuất báo cáo</a></h3>
+<p>Để xem kết quả chấm chi tiết, người dùng có thể nhấn đúp chuột vào một ô trong bảng điểm. Cửa sổ báo cáo sẽ hiện ra đủ thông tin về kết quả chấm trên mỗi test:</p>
+<p style="text-align: center"><img border="0" hspace="0" src="report.png" width="512" height="409"></p>
+<p>Nếu người dùng nhấn đúp chuột vào ô chứa tên thí sinh hoặc ô chứa tổng điểm của một thí sinh, toàn bộ thông tin về kết quả chấm bài của thí sinh đó sẽ được báo cáo. Nếu người dùng nhấn đúp chuột vào ô khác, chỉ những thông tin về một bài thi của thí sinh ứng với ô đó được báo cáo</p>
+<p>Nút <img border="0" hspace="0" src="btnexport.png" width="48" height="48" style="vertical-align:middle"> (hay phím tắt CTRL+F9) sẽ kết xuất dữ liệu từ cả hai tabs “Tổng hợp” và “Chi tiết” ra Microsoft Excel. Chức năng này chỉ kích hoạt Excel và kết xuất dữ liệu ra 2 tabsheet của Excel. Việc ghi file excel này vào đâu là do người dùng quyết định, hệ thống <b>không tự động ghi lại file excel</b>.</p>
+<p style="text-align: center"><img border="0" hspace="0" src="exceltabs.png"  width="467" height="336"></p>
+<h3><a name="ContestCommands">Tạo mới, Ghi và Mở kỳ thi cũ</a></h3>
+<p><img border="0" hspace="0" src="btnnewcontest.png" width="48" height="48" style="vertical-align:middle"><b> Chức năng tạo kỳ thi mới (CTRL+N) </b>sẽ tạo một kỳ thi mới với danh sách bài thi cũng như danh sách thí sinh rỗng.<p>
+<p><img border="0" hspace="0" src="btnsavecontest.png" width="48" height="48" style="vertical-align:middle"><b> Chức năng ghi kỳ thi (CTRL+S)</b> sẽ nén toàn bộ các dữ liệu sau:</p>
+<ul>
+<li>Toàn bộ thư mục bài làm của thí sinh</li>
+<li>Toàn bộ thư mục chứa bài thi</li>
+<li>Các cấu hình bài thi đã thiết lập</li>
+<li>Kết quả chấm bài</li>
+</ul>
+<p>vào một file do người dùng tự chọn có phần mở rộng là .contest để lưu trữ thông tin về toàn bộ kỳ thi. Những file chứa trực tiếp trong thư mục bài làm và bài thi (không đặt trong thư mục con) tuy không có nghĩa đối với hệ thống chấm nhưng <b>cũng sẽ được nén cùng</b>. Người dùng có thể lưu đề bài, bảng xếp giải, các biên bản v.v… trong những file này.</p>
+<p><i>Các file .contest là những file .zip bình thường. Chỉ cần đổi phần mở rộng “.contest” thành “.zip” là bạn có thể bung nén bằng rất nhiều chương trình thông dụng (Zip Folder, WinZIP, WinRaR) để sử dụng vào mục đích khác</i></p>
+<p><img border="0" hspace="0" src="btnopencontest.png" width="48" height="48" style="vertical-align:middle"><b> Chức năng mở kỳ thi (CTRL+O)</b> cho phép người dùng nạp một kỳ thi cũ đã nén bằng chức năng ghi kỳ thi. File .contest do người dùng nạp vào sẽ được bung nén vào thư mục ThemisContest trong thư mục giải nén. Hệ thống sẽ tự cập nhật cấu hình bài thi và kết quả chấm của kỳ thi cũ</p>
+<p><b>Chú ý: </b> Khi mở file .contest, một thư mục con ThemisContest sẽ được tạo ra trong thư mục chứa kỳ thi giải nén. Thư mục này chứa hai thư mục con Tasks và Contestants tương ứng là thư mục chứa bài thi và thư mục chứa bài làm của các thí sinh. <b>Không ghi những thông tin quan trọng vào thư mục ThemisContest</b> vì mỗi lần mở một file .contest thì thư mục này sẽ bị xóa và tạo lại. Để đặt lại thư mục chứa kỳ thi giải nén, nhấn nút <img border="0" hspace="0" src="btnsettings.png" width="48" height="48" style="vertical-align:middle"> hoặc phím tắt F11:<p>
+<p style="text-align: center"><img border="0" hspace="0" src="settings2.png" width="398" height="380"></p>
+<h3><a name="Security">Bảo mật</a></h3>
+<p>Trong những kỳ thi chính thức, những lỗ hổng bảo mật nếu bị các thí sinh khai thác có thể <b>gây hậu quả nghiêm trọng</b> ảnh hưởng tới kết quả thi. Trên những máy cài đặt hệ điều hành Windows, nếu sơ ý trong thiết lập hệ thống an ninh thì chỉ bằng vài dòng lệnh (vô tình hoặc cố ý) là chương trình của thí sinh có thể thực hiện những tác vụ nguy hiểm, chẳng hạn như:</p>
+<ul>
+<li>Dò tìm thư mục chứa bài thi, từ đó có thể sửa đổi bộ test, chép đáp án, làm sai lệch trình chấm ngoài…</li>
+<li>Dò tìm thư mục chứa bài làm, xóa hoặc sửa đổi bài làm của mình hoặc thí sinh khác…</li>
+<li>Khởi động lại máy để cài đặt một dịch vụ nhằm vô hiệu hóa các hệ thống an ninh, từ đó phát tán các thông tin nội bộ của kỳ thi.</li>
+</ul>
+<p>Phải nói thêm là trong các hệ điều hành Windows cũ hơn thế hệ Windows 2000, những tác vụ trên là không thể ngăn chặn được.</p>
+<p>Themis được thiết kế hệ thống an ninh nhằm vô hiệu hóa những tác vụ truy cập trái phép có thể gây nguy hiểm. Ngoài các mô-đun quản lý các tiến trình và bộ nhớ của Themis, việc kích hoạt chế độ bảo mật có hiệu quả hay không còn cần sự thiết lập đúng từ phía người sử dụng.<p>
+<p><b>Các bước kích hoạt hệ thống an ninh</b></p>
+<p><b>Bước 1: </b>Chuẩn bị ít nhất một phân vùng đĩa NTFS. Windows và Themis phải đặt trên một phân vùng đĩa NTFS mà muốn ghi hay thay đổi cần có quyền quản trị. Những người dùng khác chỉ được phép đọc thư mục và khởi động Themis.<br>
+Bản thân hệ điều hành Windows từ phiên bản XP trở lên khi cài đặt đều khuyến cáo người dùng sử dụng các phân vùng đĩa NTFS. Cách <a href="http://technet.microsoft.com/en-us/library/bb456984.aspx" target="_blank">chuyển một phân vùng đĩa từ FAT hay FAT32 sang NTFS</a> khá đơn giản.<p>
+<p><b>Bước 2: </b>Tạo hai người dùng với tên đăng nhập và mật khẩu tùy chọn, tạm gọi là THÍ SINH và GIÁM THỊ.
+<ul>
+<li>THÍ SINH không được có quyền quản trị, tức là không thuộc nhóm Administrators cũng như Power Users. Có thể bật Guest account làm THÍ SINH (Xem cách bật/tắt Guest account trên <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/ua_provide_guest_account_w.mspx?mfr=true" target="_blank">Windows XP</a>, <a href="http://windows.microsoft.com/en-US/windows7/Turn-the-guest-account-on-or-off" target="_blank">Windows Vista và Windows Seven</a>)</li>
+<li>THÍ SINH phải được quyền chạy Themis. Ngoài ra phải có toàn quyền kiểm soát trên thư mục chứa bài thi, thư mục chứa bài làm và thư mục “phòng thi” (nơi mà bài làm của các thí sinh được copy vào cùng với test để chạy).</li>
+<li>GIÁM THỊ cũng không nhất thiết phải là người có quyền quản trị máy. Thậm chí không cần phải có quyền truy cập thư mục bài thi, bài làm và “phòng thi”.</li>
+</ul>
+</p>
+<p><b>Bước 3: </b>Đăng nhập vào người dùng THÍ SINH, chạy Themis, nhấn nút <img border="0" hspace="0" src="btnsecurity.png" width="48" height="48" style="vertical-align:middle"> hoặc phím tắt F7 để mở hộp thoại “Bảo mật”.</p>
+<p style="text-align: center"><img border="0" hspace="0" src="activatesecurity.png" width="398" height="264"></p>
+<p>Đánh dấu ô “Kích hoạt chế độ bảo mật” và điền đủ các thông số: Quyền bảo mật, Mật mã, Tên miền: Các thông số đăng nhập của người dùng GIÁM THỊ.</p>
+<p><b>Bước 4: </b> Đặt thư mục chứa phòng thi lên phân vùng NTFS: nhấn nút <img border="0" hspace="0" src="btnsettings.png" width="48" height="48" style="vertical-align:middle"> hoặc phím tắt F11:<p>
+<p style="text-align: center"><img border="0" hspace="0" src="settings3.png" width="398" height="380"></p>
+<p>Trong ô “Thư mục chứa “phòng thi””, chọn một thư mục trên phân vùng NTFS mà người dùng THÍ SINH có quyền tạo thư mục con gọi là “phòng thi” và toàn quyền trên thư mục con đó. Khi chấm một test, các file dữ liệu của test, bài làm của thí sinh, cùng cả file .EXE đã dịch sẽ được chép vào “phòng thi” và chạy ở đây để sinh ra các file kết quả<p>
+<p>Việc kích hoạt hệ thống bảo mật chỉ cần như vậy là xong.</p>
+<p><b>Cơ chế bảo mật của Themis </b>có thể tóm tắt như sau:</p>
+<p>THÍ SINH và GIÁM THỊ là hai người dùng khác nhau, vì thí sinh không có quyền quản trị nên có những vùng dữ liệu của GIÁM THỊ mà thí sinh không thể truy cập được dưới mọi hình thức (đọc, ghi, thêm, xóa, …).</p> 
+<p style="text-align: center"><img border="0" hspace="0" src="restrictedarea1.png"  width="384" height="282"></p>
+<p>Themis chạy trong phân quyền THÍ SINH và như vậy Themis có đầy đủ quyền như THÍ SINH, tức là toàn quyền trên thư mục bài thi, bài làm và được tạo lập “phòng thi” trong thư mục đã chỉ định. Tuy nhiên, khác với THÍ SINH là Themis biết mã đăng nhập của GIÁM THỊ vì vậy có thể truy cập vùng dữ liệu dành riêng của GIÁM THỊ</p>
+<p>Trước khi chấm, Themis dùng quyền của THÍ SINH để cho GIÁM THỊ toàn quyền truy cập thư mục bài thi, bài làm và phòng thi. Bên cạnh đó, Themis cấm luôn quyền truy cập thư mục bài thi và thư mục bài làm của THÍ SINH dưới mọi hình thức.</p>
+<p>Khi bắt đầu chấm một test, Themis dùng quyền của GIÁM THỊ để chép một bài làm cùng các file dữ liệu của một test vào phòng thi. Sau đó bài làm được dịch ra .EXE và chạy với quyền của THÍ SINH. Với quyền này thì các mã lệnh trong file .EXE không thể truy cập thư mục chứa các bài thi và bài làm được nữa</p>
+<p style="text-align: center"><img border="0" hspace="0" src="restrictedarea2.png"  width="384" height="262"></p>
+<p>Khi file .EXE đã kết thúc, bộ chấm được kích hoạt chạy trong phân quyền THÍ SINH. Bộ chấm có thể đọc/ghi trên thư mục chứa test vừa chấm vì Themis đã dùng quyền của GIÁM THỊ mở khóa thư mục chứa test cho THÍ SINH truy cập. Khi bộ chấm kết thúc, thư mục chứa test sẽ được khóa trở lại.</p>
+<p>Sau khi tất cả các bài làm đã được chấm, Themis trả lại toàn quyền truy cập các thư mục bài thi và bài làm cho thí sinh</p>
+<p><b>Tóm lại</b>, khi chế độ bảo mật được kích hoạt, Themis phải chạy với người dùng THÍ SINH để quản lý bộ nhớ và ngắt bài làm đang chạy khi hết giờ. Bên cạnh đó Themis liên hệ với người dùng GIÁM THỊ để “nhờ” giữ những thư mục bí mật, đảm bảo các chương trình chạy dưới phân quyền THÍ SINH không thể truy cập được.</p>
+<h2><a name="FAQ">Các câu hỏi thường gặp</a></h2>
+<ul>
+<li><b>Làm thế nào để phục hồi cấu hình mặc định?</b></li>
+<li>Chạy Themis với tham số <b>Themis.exe /clean</b> sẽ phục hồi trạng thái mặc định của các bộ dịch và biến môi trường.</li>
+</ul><br>
+<ul>
+<li><b>Làm thế nào để chấm lại chỉ riêng một bài/một thí sinh?</b></li>
+<li>Bấm nút chuột phải vào ô cần chấm lại, chọn “Chấm lại”.<br>
+<img border="0" hspace="0" src="contextmenu1.png"  width="166" height="169"><br>
+Nếu ô được chọn ứng với một thí sinh và một bài thi, chỉ riêng bài nộp ứng với bài thi đó của thí sinh được chấm lại<br>
+Nếu ô được chọn chứa mã thí sinh, toàn bộ các bài nộp của thí sinh đó được chấm lại.<br>
+Nếu ô được chọn là tiêu đề cột ứng với một bài thi, toàn bộ bài nộp của các thí sinh ứng với bài thi đó được chấm lại
+</li>
+</ul><br>
+<ul>
+<li><b>Máy không hiển thị được các ký tự đặc biệt, chẳng hạn như các ký hiệu \CheckMark (&#x2713;), \ThereDoesNotExist (&#x2204;), \Failure (&#x2131;), \Critical Error (&#x26A0;) đều hiển thị thành ô vuông ?</b></li>
+<li>Lý do là máy chưa cài đặt các bộ fonts để hiển thị được những ký tự này. Một trong những cách khắc phục là:</br>
+1. Cài đặt font <b>LMHGUI</b> nếu hệ thống chưa có font chữ này (font này có trong thư mục chứa Themis khi cài đặt)<br>
+2. Bấm F11 để mở hộp thoại “Thiết lập môi trường”, chọn font chữ cho giao diện là <b>LMHGUI</b>.
+</li>
+</ul><br>
+<ul>
+<li><b>Các tham số dịch mặc định lấy theo quy định nào?</b></li>
+<li>Các tham số dịch của FPC, GCC/G++ được tham khảo từ quy chế của kỳ thi IOI 2011. Các tham số dịch của JAVAC được tham khảo từ quy chế của kỳ thi ACM WF 2012.</li>
+</ul><br>
+<ul>
+<li><b>Có hạn chế nào trong việc đặt tên thư mục không?</b></li>
+<li>Themis làm việc tốt với bảng mã Unicode, tên thư mục hoàn toàn có thể chứa các ký tự nằm ngoài bảng mã ASCII mà không gặp trở ngại gì. Tuy nhiên người dùng cần chú ý là ba thư mục sau <b>không được phép chứa nhau:</b> thư mục chứa các bài thi, thư mục chứa các bài làm và thư mục “phòng thi”.</li>
+</ul><br>
+<ul>
+<li><b> Thời gian thực hiện của bài làm trong hệ thống chấm không giống thời gian thực hiện của bài làm khi chạy riêng biệt?</b></li>
+<li>Thời gian thực thi chương trình tại hai thời điểm khác nhau có sai khác là bình thường nếu thời gian thực thi bị phụ thuộc một vài tiến trình ngẫu nhiên trong chương trình. Đôi khi thời gian thực thi chương trình bị ảnh hưởng bởi nhiệt độ CPU và RAM nhưng sai số thời giam trong trường hợp này thường không đáng kể. Sự khác biệt chỉ lớn khi có các chương trình quét virus hoặc ứng dụng quản lý đĩa đang hoạt động làm giảm tốc độ nhập xuất dữ liệu. Vì vậy cần tắt các chương trình này trước khi chấm.<br>
+Tốc độ của bài làm khi chạy trong hệ thống chấm có thể nhanh hơn so với việc chạy riêng biệt bài làm (khoảng vài chục milli giây nếu file dữ liệu kích thước ~10MiB). Lý do là hệ thống chấm phải copy các file dữ liệu vào thư mục hoạt động. Trong quá trình copy, hệ điều hành lưu lại một lượng lớn dữ liệu trong bộ nhớ cache, chương trình của thí sinh có thể đọc một lượng lớn dữ liệu đó trong bộ nhớ mà không cần tới các thao tác đĩa cứng.<br>
+<b>Chú ý:</b> Khi chạy bài làm của thí sinh, thời gian bắt đầu tính khi file .exe đã nạp vào bộ nhớ và bắt đầu chạy. Thời gian nạp file .exe bị ảnh hưởng bởi rất nhiều yếu tố khách quan như vị trí của file trên đĩa, tình trạng phân mảnh đĩa, các ứng dụng quét virus và quản lý tiến trình, v.v… Vì vậy Themis không tính thời gian nạp file .exe vào thời gian chạy của bài làm.
+</li>
+</ul><br>
+<ul>
+<li><b>Khi xem kết quả chi tiết, có test bài làm chạy quá thời gian nhưng vẫn được hệ thống cho điểm?</b></li>
+<li>Trước hết cần khẳng định rằng hệ thống đã cho điểm tức là bài làm chạy không quá thời gian. Việc chuẩn bị, dọn dẹp bộ nhớ trước và sau khi thực hiện bài làm và ngay cả việc bấm giờ cũng tốn thời gian nên mới có sai số này.</li>
+</ul><br>
+<ul>
+<li><b>Khi đang chấm ở chế độ bảo mật thì máy bị mất điện. Sau đó khi bật lại máy thì có một số thư mục không truy cập được và cũng không xóa được là do nguyên nhân gì?. </b></li>
+<li>Cụ thể đó là những thư mục chứa bài thi, bài làm, và phòng thi. Hệ thống an ninh đã cấm người dùng hiện tại truy cập những thư mục đó và khi chưa kịp trả lại quyền đã bị mất điện. Điều này cũng có thể xảy ra khi người sử dụng dùng Task Manager để “End Task” Themis khi đang chấm trong chế độ bảo mật. Cách khắc phục dễ nhất là đăng nhập với tên một người dùng khác để đặt lại quyền truy cập.</li>
+</ul><br>
+<ul>
+<li><b>Themis không khởi động được bộ dịch và cũng không chấm được bài nào, lỗi Access Denied, cách khắc phục?</b></li>
+<li>Themis cần được chạy trong quyền của người dùng hiện tại, tức là không được chấm khi Themis được khởi động bằng lệnh “Run as …” dưới quyền người dùng khác. Ngoài ra người dùng hiện tại cần có quyền ĐỌC thư mục chứa các bộ dịch cũng như các thư mục chứa bài thi và bài làm, quyền ĐỌC&GHI trên thư mục chứa “phòng thi”.</li>
+</ul><br>
+<ul>
+<li><b>Khi chương trình thí sinh chạy bị lỗi nghiêm trọng, Windows hiện thông báo “Application Error” rất khó chịu và đôi khi thông báo này không tự đóng khi chấm xong. Cách khắc phục?</b></li>
+<li>Lỗi này chỉ xảy ra khi có cả ba điều kiện sau: (1)Hệ điều hành Windows XP, (2)bản Themis được copy về chạy không qua cài đặt và (3)Themis chưa được chạy với quyền quản trị một lần nào. Để khắc phục lỗi đó chỉ cần loại bỏ một trong ba điều kiện sinh lỗi là đủ. Cách 1: Nâng cấp hệ điều hành lên Windows Vista, Seven hoặc mới hơn. Cách 2: Dùng bản cài đặt để cài Themis. Cách 3: Khởi động Themis với quyền quản trị (administrators) và thoát luôn, sau đó khởi động lại Themis với người dùng hiện tại.</li>
+</ul>
+<ul>
+<li><b>Cách viết một bộ chấm?</b></li>
+<li>Nếu viết trình chấm ngoài, xin tham khảo bộ chấm <a href="#ExternalJudger">C7External</a> hoặc C6AMM2External. Nếu trình chấm ngoài sinh lỗi khi chấm, hệ thống sẽ coi là thí sinh xuất dữ liệu không hợp lệ gây lỗi trình chấm và thí sinh đó sẽ được 0 điểm test tương ứng.<br>
+Nếu viết bộ chấm trong, cần hết sức cẩn thận bởi bộ chấm trong được chạy như một phần của Themis, tuy có nhanh hơn trình chấm ngoài nhưng nếu sinh lỗi sẽ làm ngưng luôn toàn bộ hệ thống chấm. Bộ chấm trong là một thư viện liên kết động (dynamic-link library - DLL) đặt trong thư mục con Judgers của Themis, trong DLL đó cần export một hàm sau: <br>
+<b>Pascal: </b><br>
+function Judge(a, b, c, d: PWideChar; var e: PWideChar): double; stdcall;<br>
+<b>C++: </b><br>
+double __stdcall Judge(wchar_t *a, wchar_t *b, wchar_t *c, wchar_t *d, wchar_t **e)<br>
+<ul>
+<li>a: [in]Con trỏ tới một xâu ký tự Unicode kết thúc bởi ký tự 0: Tên thư mục chứa bài làm của thí sinh đã chạy, trong đó có các file dữ liệu được hệ thống cung cấp và các file kết quả chương trình thí sinh tạo ra ứng với một test</li>
+<li>b: [in]Con trỏ tới một xâu ký tự Unicode kết thúc bởi ký tự 0: Tên thư mục chứa bộ test tương ứng</li>
+<li>c: [in]Con trỏ tới một xâu ký tự Unicode kết thúc bởi ký tự 0: Danh sách các file kết quả do bài thi quy định cách nhau bởi ký tự 124 (“|”)</li>
+<li>d: [in]Con trỏ tới một xâu ký tự Unicode kết thúc bởi ký tự 0: Tên bài thi</li>
+<li>e: [out]Hàm Judge ghi nhận xét dưới dạng xâu ký tự Unicode kết thúc bởi ký tự 0, sau đó đặt e trỏ tới xâu này.
+<li>Kết quả hàm trả về: Một số thực trong phạm vi từ 0.0 tới 1.0, kết quả đánh giá
+</ul>
+</li>
+</ul><br>
+<hr>
+<p>Phần mềm được viết bởi hai tác giả Lê Minh Hoàng và Đỗ Đức Đông. Mọi ý kiến góp ý và thảo luận xin gửi tại <a href = "http://dsapblog.wordpress.com/" target="_blank">blog</a> hoặc <a href = "mailto:themissoftware@gmail.com" target="_blank">email</a>.</p>
+<p><a href="http://www.embarcadero.com/products/delphi" target="_blank"><img border="0" hspace="0" src="logodelphi.png" width="64" height="64" style="vertical-align:middle">&nbsp; Built with Delphi XE10 Seattle</a></p>
+<p><a href="http://www.embarcadero.com/products/rad-studio" target="_blank"><img border="0" hspace="0" src="logoradstudio.png" width="64" height="64" style="vertical-align:middle">&nbsp; Powered by RAD Studio XE10 Seattle</a></p>
+</body>
+</html>

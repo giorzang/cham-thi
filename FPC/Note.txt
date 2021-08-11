@@ -1,0 +1,7 @@
+To update newer version of FPC Compiler
+Install Free Pascal
+Copy 2 folder
+1) bin 
+2) units
+Go to bin\i386-win32\
+delete fp.cfg, fp.ini and fpc.cfg
